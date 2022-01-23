@@ -1,22 +1,22 @@
 # Testing
 
-Jest = :heart:
+Jest = ❤️
 
 ## Main libraries
 
 Platform heavily relies on open source libraries for testing as well. Main libraries used (or recommended) are following:
 
-* [Jest](https://facebook.github.io/jest/), to run and write the tests
-* [Nock](https://github.com/node-nock/nock), to mock API calls
-* [Enzyme](https://github.com/airbnb/enzyme/), to ease JSX testing
-* react-test-renderer
-* jest-styled-components
+- [Jest](https://facebook.github.io/jest/), to run and write the tests
+- [Nock](https://github.com/node-nock/nock), to mock API calls
+- [Enzyme](https://github.com/airbnb/enzyme/), to ease JSX testing
+- react-test-renderer
+- jest-styled-components
 
 ## How we test
 
-We try to practice [Behaviour-Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) (BDD). Basically this means that we specify the behaviour with a test case, and after that we actually implement the functionality. After that it's pretty much rinse-and-repeat.
+A nice way to do development is for example TDD or [Behaviour-Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) (BDD). Basically this means that we specify the behaviour with a test case, and after that we actually implement the functionality. After that it's pretty much rinse-and-repeat.
 
-We aim for high test coverage but even more important is that the parts that really need testing, and are major part of the platform, are tested well. Project only should have stand-alone tests within it, so mostly this means unit tests. Keep in mind that tests are also run on CircleCI, so none of the tests should be environment-specific.
+We aim for high test coverage but even more important is that the parts that really need testing, and are major part of the platform, are tested well. Project only should have stand-alone tests within it, so mostly this means unit tests. Keep in mind that tests should be able to run on CI, so none of the tests should be environment-specific.
 
 While writing tests, see Jest API reference: https://facebook.github.io/jest/docs/en/getting-started.html
 
@@ -34,12 +34,6 @@ npm run test:watch ## (excellent for TDD) Keeps running tests until cancelled
 npm run test:e2e ## Runs E2E tests
 npm run lint ## Runs code style checks (runs lint:js and lint:css)
 ```
-
-## Continuous integration
-
-CircleCI is our continuous integration platform and is running our tests and generating reports. Currently it is there only to make sure that build do not break and that tests and linting rules are passed. Finally, once tests any everything passes, it will deploy the code (by default) to the test environment.
-
-Configuration for CircleCI is in `.circle/config.yml` file.
 
 ## Other topics
 

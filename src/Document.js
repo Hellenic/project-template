@@ -2,6 +2,7 @@ import React from "react";
 import { ServerStyleSheet } from "styled-components";
 import { AfterRoot, AfterData, AfterScripts } from "@jaredpalmer/after";
 import serialize from "serialize-javascript";
+import theme from "./theme";
 
 export default class Document extends React.Component {
   static async getInitialProps({ renderPage }) {
@@ -23,6 +24,7 @@ export default class Document extends React.Component {
         <head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content={theme.colors.primary} />
 
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}

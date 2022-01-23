@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:14-alpine
 
 ARG environment=staging
 
@@ -7,7 +7,7 @@ COPY . .
 COPY .env.${environment} .env
 RUN rm .env.*
 
-RUN npm install --production
+RUN npm install
 RUN npm run build
 
 EXPOSE 3000

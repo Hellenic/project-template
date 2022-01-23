@@ -9,7 +9,7 @@ i18n capabilities are provided by `react-intl` libraries. To use the libraries t
 
 Server will automatically determine user's locale based on the headers browser sent. User will then be redirect to the path starting with the locale (unless they were already in it), for example: `/en/`. Once user is on this path, that path prefix will be used as a locale throughout the application.
 
-If we want text to be translatable it needs to be wrapped in a `FormattedMessage` component. More details https://github.com/yahoo/react-intl
+If we want text to be translatable it needs to be wrapped in a `FormattedMessage` component. More details https://formatjs.io/docs/getting-started/installation
 
 ## Managing Languages
 
@@ -18,7 +18,7 @@ Currently you would need to modify `utils/locale.js` to load new languages to th
 ## Example usage
 
 ```javascript
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 export default class Example extends Component {
   render() {
