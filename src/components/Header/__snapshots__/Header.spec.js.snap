@@ -3,7 +3,7 @@
 exports[`renders Header correctly 1`] = `
 <div>
   <div
-    className="sc-bdvvtL eiGIhP"
+    className="sc-bdVaJa dWVnNZ"
   >
     <img
       alt="logo"
@@ -29,7 +29,7 @@ exports[`renders Header correctly 1`] = `
   >
     Home
   </a>
-   -
+   - 
   <a
     aria-current={null}
     href="/en/about"

@@ -5,7 +5,7 @@ import logo from "./react.svg";
 
 const Container = styled.div`
   text-align: center;
-  background-color: ${(props) => props.theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 20px;
   color: #555;
 `;
@@ -22,7 +22,7 @@ const Header = () => (
       <h2>Welcome to project frontend starter</h2>
       <h3>Implemented with Razzle + After.js</h3>
     </Container>
-    <Link to="/">Home</Link> -<Link to="/about">About</Link> -
+    <Link to="/">Home</Link> - <Link to="/about">About</Link> -
     <Link to="/terms">Terms</Link>
   </div>
 );
