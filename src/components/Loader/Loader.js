@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { FormattedMessage } from "react-intl";
 
 const Container = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 300px;
-  ${p =>
+  ${(p) =>
     p.small &&
     `
     height: 100%;
@@ -18,15 +18,15 @@ const Container = styled.div`
 
 const Text = styled.div`
   margin-left: 15px;
-  color: ${props => props.theme.colors.primary};
-  font-family: ${props => props.theme.colors.secondary};
+  color: ${(props) => props.theme.colors.primary};
+  font-family: ${(props) => props.theme.colors.secondary};
   text-transform: uppercase;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 2px;
 `;
 
-const Loader = props => {
+const Loader = (props) => {
   if (!props.visible) {
     return null;
   }
@@ -64,10 +64,10 @@ const Loader = props => {
 };
 
 Loader.propTypes = {
-  visible: PropTypes.bool
+  visible: PropTypes.bool,
 };
 Loader.defaultProps = {
-  visible: false
+  visible: false,
 };
 
 export default Loader;

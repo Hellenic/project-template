@@ -1,51 +1,56 @@
-import express from 'express';
-import compression from 'compression';
-import helmet from 'helmet';
-import { render } from '@jaredpalmer/after';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
-import Document from './Document';
-import { IntlProvider, addLocaleData } from 'react-intl';
-import { ThemeProvider } from 'styled-components';
-import App from './pages/App';
-import { determineLocale, getLocaleData } from './utils/locale';
-import routes from './routes';
-import theme from './theme';
+import express from "express";
+import compression from "compression";
+import helmet from "helmet";
+import React from "react";
+import { render } from "@jaredpalmer/after";
+import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
+import { IntlProvider } from "react-intl";
+import { ThemeProvider } from "styled-components";
+import Document from "./Document";
+import App from "./App";
+import { determineLocale, getLocaleMessages } from "./utils/locale";
+import routes from "./routes";
+import theme from "./theme";
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
+const chunks = require(process.env.RAZZLE_CHUNKS_MANIFEST);
+const scrollToTop = false;
+const isProduction = process.env.NODE_ENV !== "development";
 
 const server = express();
+server.disable("x-powered-by");
 server.use(compression());
-server.use(helmet());
-server.disable('x-powered-by');
+if (isProduction) {
+  server.use(helmet());
+}
 server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
 
 // NOTE Add / load static data here. This will be passed to the application
 // e.g. a header and footer from CMS could be loaded here
-const initialData = { hello: 'world!' };
+const initialAppData = { hello: "world!" };
 
-server.get('/*', async (req, res) => {
+server.get("/*", async (req, res) => {
   try {
     const localeCode = determineLocale(req, res);
     if (!localeCode) {
       return;
     }
-    const locale = getLocaleData(localeCode);
-    addLocaleData(locale.data);
+    // TODO Might need to add polyfill on server-side to have locale data present
+    const messages = getLocaleMessages(localeCode);
 
     const context = {};
     const isFrontpage = req.url === `/${localeCode}/`;
     // Pass all initial data here
     // Note, that we pass it to our App here (for server-side render)
     // And also to the Document, where client will pick it up
-    const customRenderer = node => {
+    const customRenderer = (node) => {
       const appNode = (
-        <IntlProvider locale={localeCode} messages={locale.messages}>
+        <IntlProvider locale={localeCode} messages={messages}>
           <ThemeProvider theme={theme}>
             <StaticRouter location={req.url} context={context}>
               <App
-                siteData={initialData}
+                appData={initialAppData}
                 localeCode={localeCode}
                 isFrontpage={isFrontpage}
               >
@@ -56,26 +61,30 @@ server.get('/*', async (req, res) => {
         </IntlProvider>
       );
       const html = renderToString(appNode);
-      return { html, initialData };
+      return { html, initialAppData };
     };
+
     const html = await render({
       req,
       res,
-      document: Document,
       routes,
       assets,
+      chunks,
       customRenderer,
+      document: Document,
+      scrollToTop,
       // Anything else you add here will be made available
       // within getInitialProps(ctx)
       // e.g a redux store...
-      customThing: 'thing'
+      customThing: "thing",
     });
+
     res.send(html);
   } catch (error) {
-    console.error('Error occurred on server-rendering', error);
+    console.error("Error occurred on server-rendering", error);
     res.status(500).json({
-      message: 'Error occurred. See server log for details.',
-      error
+      message: "Error occurred. See server log for details.",
+      error,
     });
   }
 });

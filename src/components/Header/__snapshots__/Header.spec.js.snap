@@ -3,12 +3,12 @@
 exports[`renders Header correctly 1`] = `
 <div>
   <div
-    className="sc-bdVaJa dWVnNZ"
+    className="sc-bdvvtL eiGIhP"
   >
     <img
       alt="logo"
       className="Header-logo"
-      src="logo.svg"
+      src="react.svg"
       style={
         Object {
           "height": "80px",
@@ -16,7 +16,7 @@ exports[`renders Header correctly 1`] = `
       }
     />
     <h2>
-      Welcome to redandblue frontend starter
+      Welcome to project frontend starter
     </h2>
     <h3>
       Implemented with Razzle + After.js

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ export default class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, info) {
     this.setState({ hasError: true });
-    console.error('Error was thrown', error);
+    console.error("Error was thrown", error);
   }
 
   render() {

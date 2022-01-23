@@ -1,7 +1,7 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import TestWrapper from '../../../test/TestWrapper';
-import HeaderComponent from './Header';
+import React from "react";
+import renderer from "react-test-renderer";
+import TestWrapper from "../../../test/TestWrapper";
+import HeaderComponent from "./Header";
 
 const Header = () => (
   <TestWrapper>
@@ -9,7 +9,7 @@ const Header = () => (
   </TestWrapper>
 );
 
-it('renders Header correctly', () => {
+it("renders Header correctly", () => {
   const tree = renderer.create(<Header />).toJSON();
   expect(tree).toMatchSnapshot();
 });

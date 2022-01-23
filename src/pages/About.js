@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-import Helmet from 'react-helmet';
+import React, { Component } from "react";
+import { FormattedMessage } from "react-intl";
+import Helmet from "react-helmet";
 
 class About extends Component {
   render() {
     return (
-      <div style={{ width: '300px', margin: '1em' }}>
+      <div style={{ width: "300px", margin: "1em" }}>
         <Helmet title="About" />
         <h1>
           <FormattedMessage id="page.about" defaultMessage="About" />

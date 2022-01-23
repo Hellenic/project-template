@@ -1,20 +1,20 @@
-import React from 'react';
-import { ServerStyleSheet } from 'styled-components';
-import { AfterRoot, AfterData } from '@jaredpalmer/after';
-import serialize from 'serialize-javascript';
+import React from "react";
+import { ServerStyleSheet } from "styled-components";
+import { AfterRoot, AfterData, AfterScripts } from "@jaredpalmer/after";
+import serialize from "serialize-javascript";
 
 export default class Document extends React.Component {
-  static async getInitialProps({ assets, data, renderPage }) {
+  static async getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
-    const page = await renderPage(App => props =>
-      sheet.collectStyles(<App {...props} />)
+    const page = await renderPage(
+      (App) => (props) => sheet.collectStyles(<App {...props} />)
     );
     const styleTags = sheet.getStyleElement();
-    return { assets, data, ...page, styleTags };
+    return { ...page, styleTags };
   }
 
   render() {
-    const { helmet, assets, data, initialData, styleTags } = this.props;
+    const { helmet, initialAppData, styleTags } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
     const bodyAttrs = helmet.bodyAttributes.toComponent();
 
@@ -48,18 +48,13 @@ export default class Document extends React.Component {
         </head>
         <body {...bodyAttrs}>
           <AfterRoot />
-          <AfterData data={data} />
+          <AfterData />
+          <AfterScripts />
           <script
             dangerouslySetInnerHTML={{
-              __html: `window.__data=${serialize(initialData)};`
+              __html: `window.__INITIAL_APP_DATA=${serialize(initialAppData)};`,
             }}
             charSet="UTF-8"
-          />
-          <script
-            type="text/javascript"
-            src={assets.client.js}
-            defer
-            crossOrigin="anonymous"
           />
         </body>
       </html>

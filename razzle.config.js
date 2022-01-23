@@ -1,6 +1,7 @@
 const MAXIMUM_ASSET_SIZE = 400000;
 
 module.exports = {
+  plugins: ['manifest'],
   modify: (config, { target, dev }, webpack) => {
     // Increase our maximum bundle size
     // Preferably in the long run we can setup tree shaking etc. and make this smaller

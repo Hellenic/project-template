@@ -1,11 +1,9 @@
 # How to setup HTTPS locally
 
-## Why would you need HTTPS
+## Why would you need HTTPS locally
 
 Mostly you don't. If you wish to use certain browser features, such as `getUserMedia`
 to access user's camera, then you need HTTPS.
-
-In other words, if you need to develop EAN code scanning for example, you need HTTPS.
 
 Note, that `localhost` is also considered secure origin, even without HTTPS.
 
