@@ -21,9 +21,13 @@ const isProduction = process.env.NODE_ENV !== "development";
 const server = express();
 server.disable("x-powered-by");
 server.use(compression());
-if (isProduction) {
-  server.use(helmet());
-}
+server.use(
+  helmet({
+    contentSecurityPolicy: false, // TODO Configure CSP
+    crossOriginEmbedderPolicy: isProduction,
+    crossOriginResourcePolicy: { policy: "same-site" },
+  })
+);
 server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
 
 // NOTE Add / load static data here. This will be passed to the application

@@ -32,7 +32,7 @@ if (module.hot) {
   });
 }
 
-// Start the development server
+// Start the server
 server.listen(port, (error) => {
   if (error) {
     console.log(error);
