@@ -31,6 +31,12 @@ npm run dev
 npm test
 ```
 
+E2E tests
+
+```bash
+npm run test:e2e
+```
+
 Project also includes Prettier, which automatically formats your code on each commit.
 You can also run it manually with `npm run prettify`.
 
@@ -46,11 +52,11 @@ npm start
 - [x] Universal ES6, ES7, ES8...
 - [x] Server-side rendering
 - [x] Top-notch performance
-- [x] ➡️ Bundling
-- [x] ➡️ Tree shaking
-- [x] ➡️ Code splitting
-- [x] ➡️ Critical CSS
-- [x] gzip
+- [x] ▶️ Bundling
+- [x] ▶️ Tree shaking
+- [x] ▶️ Code splitting
+- [x] ▶️ Critical CSS
+- [x] HTTP compression (gzip)
 - [x] Internationalization & Localization (see `docs/Internationalization.md`)
 - [x] Progressive Web App (Service Worker)
 - [x] Error handling

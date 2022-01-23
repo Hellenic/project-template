@@ -1,18 +1,15 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { MemoryRouter } from 'react-router-dom';
-import { addLocaleData, IntlProvider } from 'react-intl';
-import en from 'react-intl/locale-data/en';
-import identityProxy from 'identity-obj-proxy';
-import theme from '../src/theme';
-
-addLocaleData([...en]);
+import PropTypes from "prop-types";
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import { MemoryRouter } from "react-router-dom";
+import { IntlProvider } from "react-intl";
+import identityProxy from "identity-obj-proxy";
+import theme from "../src/theme";
 
 // Stub for global Window objects
 window.matchMedia = () => ({ matches: true });
 
-const TestWrapper = props => {
+const TestWrapper = (props) => {
   return (
     <IntlProvider locale="en" messages={identityProxy}>
       <MemoryRouter>
@@ -23,7 +20,7 @@ const TestWrapper = props => {
 };
 
 TestWrapper.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default TestWrapper;
