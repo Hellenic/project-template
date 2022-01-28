@@ -49,6 +49,7 @@ npm start
 ## Features
 
 - [x] Great developer experience
+- [x] ▶️ eg. Styled components, Jest, Prettier, HMR, etc...
 - [x] Universal ES6, ES7, ES8...
 - [x] Server-side rendering
 - [x] Top-notch performance
