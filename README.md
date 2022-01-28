@@ -9,6 +9,8 @@ Clone it, modify it and you have your own custom project with all the cool stuff
 
 ## How to use
 
+Hit the "Use this template" at the top, or do the same manually:
+
 ```bash
 git clone https://github.com/Hellenic/project-template <project-folder>
 cd <project-folder>
